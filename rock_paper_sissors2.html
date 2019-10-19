@@ -22,7 +22,7 @@
                 move = result[Math.floor(Math.random() * result.length)];
                 return move;
             }
-                        
+                       
             function playRound(){
                 let computer = computerPlay();
                 let player = prompt('Choose rock, paper, or sissors please.').toLowerCase()
@@ -38,7 +38,7 @@
             }
 
             function game(){
-                for (round = 1; round < 10; round++){
+                for (round = 1; round < 100; round++){
                     playRound(); 
                     if(playerScore == 5 || computerScore == 5){
                        function gameOver(){
