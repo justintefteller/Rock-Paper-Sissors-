@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+ <html>
+    <head>
+        <title>Rock, Paper, Sissors</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class='main'>
+            <div class='title'> 
+                <h1>Rock! Paper! Sissors!</h1>
+            </div>
+            
+                <div class='container'>
+                    <div class='scoreboard'>
+                        <span class='playerscore'>Player Score: <span id="ps"></span><span>
+                        <span class='computerscore'>Computer Score: <span id="cs"></span></span>
+                        <span class='tied'>Ties: <span id='tie'></span></span>
+                    </div>
+                </div>
+                <div class='buttons'>
+                    <div class="rock">
+                        <button class='button' id='r'>Rock</button>
+                    </div>
+                    <div class="paper">
+                        <button class='button' id='p'>Paper</button>
+                    </div>
+                    <div class="sissors">
+                        <button class='button' id='s'>Sissors</button>
+                    </div>
+                    <div class='startgame'>
+                        <button class='gamebtn' id='playbtn'>Play!</button>
+                    </div>
+                    <div class='reset'>
+                        <button class='gamebtn' id='resetbtn'>Reset</button>
+                    </div>
+                </div>
+        </div>
+
+        <script>
+            let playerScore = 0;
+            let computerScore = 0;
+            let tie = 0;
+            let ps = document.querySelector('#ps');
+            let cs = document.querySelector('#cs');
+            let ts = document.querySelector('#tie')
+         
+           
+           const buttons = document.querySelectorAll('.button');
+            buttons.forEach(button => button.addEventListener('click', playRound));
+
+            function playRound(e) {
+                ps.textContent = playerScore;
+                cs.textContent = computerScore;
+                ts.textContent = tie;
+                if (e.type === 'click'){
+                  let player = this.innerHTML.toLowerCase();
+                  let computer = computerPlay();
+                    if (computer == player){
+                     ts.textContent = tie++ 
+                    } else if (computer == 'rock' && player == 'paper' || computer == 'paper' && player == 'sissors' || computer == 'sissors' && player == 'rock') {
+                        ps.textContent = playerScore++;
+                            if( playerScore == 5){
+                                winner();
+                            }
+                    } else if (computer == 'rock' && player == 'sissors' || computer == 'sissors' && player == 'paper' || computer == 'paper' && player == 'rock') {
+                        cs.textContent = computerScore++;
+                            if(computerScore == 5){
+                                loser();
+                            }
+                    }
+                } else {
+                    console.log('error')
+                }
+            }
+            function computerPlay() {
+                result = ['rock', 'paper', 'sissors'];
+                move = result[Math.floor(Math.random() * result.length)];
+                return move
+            }          
+            const playbtn = document.querySelector('#playbtn');
+            playbtn.addEventListener('click', playRound);
+
+            function alertScores() {
+                alert("Player Score: " + playerScore + " Computer Score: " + computerScore);
+            }
+            const resetbtn = document.querySelector('#resetbtn');
+            resetbtn.addEventListener('click', resetScores);
+            
+            function resetScores() {
+                
+                playerScore = 0;
+                computerScore = 0;
+                tie = 0;
+                cs.textContent = computerScore;
+                ps.textContent = playerScore;
+                ts.textContent = tie;
+                return ps;
+                return cs;
+                return tie;
+            }
+            function winner(){
+                if(!confirm("WINNER")) {
+                    return false
+                }else {
+                   resetScores();
+                } 
+            }
+
+            function loser(){
+                if(!confirm("You lost!")) {
+                    return false
+                }else {
+                    resetScores();
+                }
+            }
+            
+        </script>
+    </body>
+</html>

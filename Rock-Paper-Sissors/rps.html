@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>
+            Rock, Paper, Sissors
+        </title>
+    </head>
+    <body>
+        <script>
+           
+    
+            function playRound(){
+
+                let playerSelection = function player () {
+                let playerAnswer = prompt("Select Rock, Paper, or Sissors");
+                        console.log(playerAnswer.toLowerCase());
+                    return playerAnswer;
+                }
+
+                let computerSelection = function computerPlay () { 
+                    function getRandomInt(max) {
+                        return Math.floor(Math.random(max) * Math.floor(max))
+                            }
+                    let computerAnswer = getRandomInt(3)
+                        if(computerAnswer == 0) {
+                            console.log("rock") ;
+                        }else if (computerAnswer == 1){
+                            console.log("paper");
+                        }else{
+                            console.log("sissors" );
+                            return computerAnswer;
+                    }
+                }
+                if (playerSelection == computerSelection) {
+                    console.log("You Tied!");
+                } else if (playerSelection == "rock" && computerSelection == "sissors"){
+                    console.log(" Rock beats sissors, you win!");
+                } else if (playerSelection == "rock" && computerSelection == "paper"){
+                    console.log("Paper beats rock, you lose!");
+                } else if (playerSelection == "paper" && computerSelection == "rock"){
+                    console.log("Paper beats rock, you win!");
+                } else if (playerSelection == "paper" && computerSelection == "sissors"){
+                    console.log("Sissors beats paper, you lose!");
+                } else if (playerSelection == "sissors" && computerSelection == "paper"){
+                    console.log("Sissors beats paper, you win!");
+                } else if (playerSelection == "sissors" && computerSelection =="rock"){
+                    console.log("Rock beats sissors, you lose!");
+                } else {
+                    console.log("Something went Wrong!");
+                }
+            }  
+            console.log(playRound());
+                // function getRandomInt(max) {
+                // return Math.floor(Math.random(max) * Math.floor(max))
+                //     }
+
+                // function computerPlay (a) { 
+                //    let computerAnswer = getRandomInt(3);
+                //         if(computerAnswer == 0) {
+                //             console.log("rock");
+                //         }else if (computerAnswer == 1)
+                //             console.log("paper");
+                //         }else {
+                //             console.log("sissors");
+                //         }
+                //     }
+
+                // computerPlay(computerSelection);
+            
+                playerSelection = prompt("Select Rock, Paper, or Sissors");
+                    let playerAnswer = playerSelection.toLowerCase();
+                   console.log(playerAnswer);
+                                    
+
+                function compare (a,b) {
+                    if (playerAnswer == "rock" && computerAnswer == "sissors") {
+                        console.log(" Rock beats sissors, you win!");
+                    } else if (playerAnswer == "rock" && computerAnswer == "paper") {
+                        console.log("Paper beats rock, you lose!");
+                    } else if (playerAnswer == "paper" && computerAnswer == "rock"){
+                        console.log("Paper beats sissors, you win!");
+                    } else if (playerAnwer == "paper" && computerAnswer == "sissors"){
+                        console.log("Sissors beats paper, you lose!");
+                    } else if (playerAnswer == "sissors" && computerAnswer == "paper") 
+                        console.log("Sissors beats, you win!");
+                    } else if (playerAnwer == "sissors" && computerAnswer =="rock"){
+                        console.log("Rock beats sissors, you lose!")
+                    } else {
+                        cosole.log("Wow, you tied!");
+                    }
+                } 
+                let answer = compare(playerAnswer, computerAnswer);
+                return answer;
+            }
+            
+        </script>
+    </body>
+</html>

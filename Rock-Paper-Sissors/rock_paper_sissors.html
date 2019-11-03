@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <script>
+
+            // 1) comupter choice and player choice
+            // 2) compare choices 
+            // 3) determine who won 
+            // 4) give point to winner 
+            // 5) repeat round and give point 
+            // 6) repeat 5 times and stop game 
+            // 7) determine winner 
+            // if a players or computers score goes up then the round pluses by 1
+            let playerScore = 0;
+            let computerScore = 0;
+
+            function computerPlay(){
+                result = ['rock', 'paper', 'sissors'];
+                move = result[Math.floor(Math.random() * result.length)];
+                return move;
+            }
+                       
+            function playRound(){
+                let computer = computerPlay();
+                let player = prompt('Choose rock, paper, or sissors please.').toLowerCase()
+                    if (computer == player){
+                        console.log('You tied this round!')
+                    } else if (computer == 'rock' && player == 'paper' || computer == 'paper' && player == 'sissors' || computer == 'sissors' && player == 'rock') {
+                        console.log('You win this round!'); 
+                        playerScore++;
+                    } else if (computer == 'rock' && player == 'sissors' || computer == 'sissors' && player == 'paper' || computer == 'paper' && player == 'rock') {
+                        console.log('You lose this round!');
+                        computerScore++;
+                }
+            }
+
+            function game(){
+                for (round = 1; round < 100; round++){
+                   if (playerScore === 5 || computerScore === 5) {
+                       break;
+                   }else {
+                       playRound();
+                    }
+                }
+                if(playerScore === 5){
+                    var new1 = prompt('You win!','Play again?');
+                        if(new1 === true){
+                            resetGame();
+                        }
+                } else{
+                    var new2 = prompt('You lose!', 'Play again?');
+                        if(new2 === true){
+                            resetGame();
+                        }
+                }
+            }
+    
+            function resetGame(){
+               let newScore1 = playerScore;
+               let newScore2 = computerScore;
+                newScore1.append(0);
+                newScore2.append(0);
+            }
+            // function gameOver(){
+            //     if (playerScore == 5 ){
+            //             return 'Game over, you win!'
+            //         } else if (computerScore == 5) {
+            //             return 'Game over, you lose...'
+            //         }else {
+            //             console.log('something went wrong!')
+            //     }
+            // }
+
+            // function gameOver(){
+            //     if (playerScore === 5 ){
+            //          'Game over, you win!'
+            //     } else if (computerScore === 5) {
+            //          'Game over, you lose...'
+            //     }else {
+            //          'You tied!'
+            //     }
+            // }
+            // function game(){
+            //     if(!gameOver()){
+            //         playRound();
+            //     }
+            // }
+
+        </script>
+    </body>
+</html>
